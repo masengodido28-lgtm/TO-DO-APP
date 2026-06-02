@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url("/assets/BG.webp");
+    background-image: url("./assets/BG.webp");
     display: flex;
     justify-content: center;
     padding-top: 50px;
