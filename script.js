@@ -6,6 +6,9 @@ const allBtn = document.getElementById("allBtn");
 const activeBtn = document.getElementById("activeBtn");
 const completedBtn = document.getElementById("completedBtn");
 
+const dueDateInput = document.getElementById("dueDateInput");// New due date input
+
+
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 let currentFilter = "all";
@@ -21,6 +24,7 @@ todoForm.addEventListener("submit", function (event) {
 
     tasks.push({
         text: taskText,
+        dueDate: dueDateInput.value, // Store the due date
         completed: false
     });
 
@@ -28,6 +32,7 @@ todoForm.addEventListener("submit", function (event) {
     renderTasks();
 
     todoInput.value = "";
+    dueDateInput.value = "";
 });
 
 allBtn.addEventListener("click", function () {
@@ -47,6 +52,7 @@ completedBtn.addEventListener("click", function () {
 
 function renderTasks() {
     todoList.innerHTML = "";
+    dueDateInput.value = "";
 
     let filteredTasks = tasks;
 
@@ -68,7 +74,11 @@ function renderTasks() {
         }
 
         const span = document.createElement("span");
-        span.textContent = task.text;
+        if (task.dueDate) {
+            span.textContent = `${task.text} (Due: ${task.dueDate})`;
+        } else {
+            span.textContent = task.text;
+        }
 
         const buttonContainer = document.createElement("div");
         buttonContainer.classList.add("task-buttons");

@@ -74,3 +74,13 @@ li {
 .filters button {
     padding: 8px 12px;
 }
+/* Due Date Input */
+
+#dueDateInput {
+    background: #07c22f;
+    border: none;
+    position: relative;
+    left: 70px;
+    bottom: 10px;
+    
+}
